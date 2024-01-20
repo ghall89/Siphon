@@ -1,17 +1,15 @@
-//
-//  SiphonApp.swift
-//  Siphon
-//
-//  Created by Graham Hall on 1/16/24.
-//
-
 import SwiftUI
 
 @main
-struct SiphonApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+struct Video_StrawApp: App {
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+				.onAppear(perform: {
+					authorizeNotifications()
+				})
+		}
+		.windowResizability(.contentSize)
+		.windowStyle(.hiddenTitleBar)
+	}
 }

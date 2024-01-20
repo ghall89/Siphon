@@ -9,17 +9,27 @@
 /* Begin PBXBuildFile section */
 		D33B1F462B575C2F00787E3C /* SiphonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1F452B575C2F00787E3C /* SiphonApp.swift */; };
 		D33B1F482B575C2F00787E3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1F472B575C2F00787E3C /* ContentView.swift */; };
-		D33B1F4A2B575C3000787E3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33B1F492B575C3000787E3C /* Assets.xcassets */; };
 		D33B1F4D2B575C3000787E3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33B1F4C2B575C3000787E3C /* Preview Assets.xcassets */; };
+		D33B1F562B575C3D00787E3C /* VideoOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1F552B575C3D00787E3C /* VideoOptions.swift */; };
+		D33B1F5B2B575C6F00787E3C /* downloadVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1F582B575C6F00787E3C /* downloadVideo.swift */; };
+		D33B1F5C2B575C6F00787E3C /* authorizeNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1F592B575C6F00787E3C /* authorizeNotifications.swift */; };
+		D33B1F5D2B575C6F00787E3C /* triggerNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1F5A2B575C6F00787E3C /* triggerNotification.swift */; };
+		D33B1F642B575CD100787E3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33B1F632B575CD100787E3C /* Assets.xcassets */; };
+		D3F6C71F2B5C3AD000D9B6E0 /* downloadScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = D3F6C71E2B5C39BB00D9B6E0 /* downloadScript.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D33B1F422B575C2F00787E3C /* Siphon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Siphon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33B1F452B575C2F00787E3C /* SiphonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiphonApp.swift; sourceTree = "<group>"; };
 		D33B1F472B575C2F00787E3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D33B1F492B575C3000787E3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D33B1F4C2B575C3000787E3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D33B1F4E2B575C3000787E3C /* Siphon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Siphon.entitlements; sourceTree = "<group>"; };
+		D33B1F552B575C3D00787E3C /* VideoOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoOptions.swift; sourceTree = "<group>"; };
+		D33B1F582B575C6F00787E3C /* downloadVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = downloadVideo.swift; sourceTree = "<group>"; };
+		D33B1F592B575C6F00787E3C /* authorizeNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = authorizeNotifications.swift; sourceTree = "<group>"; };
+		D33B1F5A2B575C6F00787E3C /* triggerNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = triggerNotification.swift; sourceTree = "<group>"; };
+		D33B1F632B575CD100787E3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3F6C71E2B5C39BB00D9B6E0 /* downloadScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = downloadScript.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +62,11 @@
 		D33B1F442B575C2F00787E3C /* Siphon */ = {
 			isa = PBXGroup;
 			children = (
+				D33B1F632B575CD100787E3C /* Assets.xcassets */,
+				D33B1F572B575C6F00787E3C /* Logic */,
+				D33B1F542B575C3D00787E3C /* Models */,
 				D33B1F452B575C2F00787E3C /* SiphonApp.swift */,
 				D33B1F472B575C2F00787E3C /* ContentView.swift */,
-				D33B1F492B575C3000787E3C /* Assets.xcassets */,
 				D33B1F4E2B575C3000787E3C /* Siphon.entitlements */,
 				D33B1F4B2B575C3000787E3C /* Preview Content */,
 			);
@@ -67,6 +79,25 @@
 				D33B1F4C2B575C3000787E3C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D33B1F542B575C3D00787E3C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D33B1F552B575C3D00787E3C /* VideoOptions.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D33B1F572B575C6F00787E3C /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				D33B1F582B575C6F00787E3C /* downloadVideo.swift */,
+				D3F6C71E2B5C39BB00D9B6E0 /* downloadScript.sh */,
+				D33B1F592B575C6F00787E3C /* authorizeNotifications.swift */,
+				D33B1F5A2B575C6F00787E3C /* triggerNotification.swift */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +116,8 @@
 			dependencies = (
 			);
 			name = Siphon;
+			packageProductDependencies = (
+			);
 			productName = Siphon;
 			productReference = D33B1F422B575C2F00787E3C /* Siphon.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +146,8 @@
 				Base,
 			);
 			mainGroup = D33B1F392B575C2F00787E3C;
+			packageReferences = (
+			);
 			productRefGroup = D33B1F432B575C2F00787E3C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,8 +162,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33B1F642B575CD100787E3C /* Assets.xcassets in Resources */,
 				D33B1F4D2B575C3000787E3C /* Preview Assets.xcassets in Resources */,
-				D33B1F4A2B575C3000787E3C /* Assets.xcassets in Resources */,
+				D3F6C71F2B5C3AD000D9B6E0 /* downloadScript.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +175,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33B1F5C2B575C6F00787E3C /* authorizeNotifications.swift in Sources */,
 				D33B1F482B575C2F00787E3C /* ContentView.swift in Sources */,
+				D33B1F5B2B575C6F00787E3C /* downloadVideo.swift in Sources */,
+				D33B1F5D2B575C6F00787E3C /* triggerNotification.swift in Sources */,
+				D33B1F562B575C3D00787E3C /* VideoOptions.swift in Sources */,
 				D33B1F462B575C2F00787E3C /* SiphonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
