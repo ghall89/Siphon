@@ -10,9 +10,11 @@ func downloadVideo(_ options: VideoOptions) async throws {
 	
 	process.environment = ["PATH": "/opt/homebrew/bin"]
 	
-	process.arguments = [scriptPath, options.url]
-	
-	print(process.arguments)
+	process.arguments = [
+		scriptPath,
+		options.url,
+		options.resolution.rawValue
+	]
 	
 	let pipe = Pipe()
 	process.standardOutput = pipe

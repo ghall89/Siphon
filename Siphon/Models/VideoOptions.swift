@@ -12,8 +12,8 @@ enum FileFormat: String, CaseIterable {
 }
 
 enum VideoResolution: String, CaseIterable {
-	case low = "480p"
-	case medium = "720p"
-	case high = "1080p"
-	case highest = "4k"
+	case low = "480"
+	case medium = "720"
+	case high = "1080"
+//	case highest = "4k"
 }
