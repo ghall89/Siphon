@@ -8,8 +8,18 @@ func downloadVideo(_ options: VideoOptions) async throws {
 		throw NSError(domain: "ShellScriptErrorDomain", code: 404, userInfo: ["message": "Script not found"])
 	}
 	
+	// Use appropriate homebrew installation based on CPU
+#if arch(x86_64)
+	// on Intel
+	process.environment = ["PATH": "/usr/local/bin"]
+#elseif arch(arm64)
+	// on Apple Silicon
 	process.environment = ["PATH": "/opt/homebrew/bin"]
+#else
+	print("Unknown CPU")
+#endif
 	
+	// yt-dlp [url] -S [resolution]
 	process.arguments = [
 		scriptPath,
 		options.url,
