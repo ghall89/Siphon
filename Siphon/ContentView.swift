@@ -6,6 +6,7 @@ struct ContentView: View {
 	
 	@State var videoUrl: String = ""
 	@State var isLoading: Bool = false
+	@StateObject var progress = ProgressHolder()
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -17,7 +18,7 @@ struct ContentView: View {
 				Button(action: { Task { await clickHandler() } }, label: {
 					Image(systemName: "arrowshape.down.circle")
 				})
-				.disabled(isLoading)
+				.help("Download")
 			}
 			Divider()
 			HStack {
@@ -29,19 +30,21 @@ struct ContentView: View {
 							 label: {
 					Image(systemName: "arrow.down.left.and.arrow.up.right.square.fill")
 				})
-//				Picker(selection: $fileFormat, content: {
-//					ForEach(FileFormat.allCases, id: \.self) { res in
-//						Text("\(res.rawValue)")
-//					}
-//				},
-//							 label: {
-//					Image(systemName: "film.stack.fill")
-//				}
-//				)
+				.help("Resolution")
 			}
 		}
 		.padding()
 		.frame(width: 400)
+		.sheet(
+			isPresented: $isLoading,
+			content: {
+			VStack {
+//				ProgressView(value: progress.value, total: 100.0)
+				ProgressView()
+				Text("Downloading")
+			}
+			.padding()
+		})
 	}
 	
 	private func clickHandler() async {
@@ -51,11 +54,17 @@ struct ContentView: View {
 				VideoOptions(
 					url: videoUrl,
 					fileFormat: fileFormat,
-					resolution: resolution)
+					resolution: resolution),
+				progressHolder: progress
 			)
 		} catch {
 			print(error)
 		}
 		isLoading = false
 	}
+	
+}
+
+class ProgressHolder: ObservableObject {
+	@Published var value: Double = 0.0
 }

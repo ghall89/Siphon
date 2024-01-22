@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D31EFD192B5F08F000AD7B56 /* ytdlpExists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31EFD182B5F08F000AD7B56 /* ytdlpExists.swift */; };
 		D33B1F462B575C2F00787E3C /* SiphonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1F452B575C2F00787E3C /* SiphonApp.swift */; };
 		D33B1F482B575C2F00787E3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B1F472B575C2F00787E3C /* ContentView.swift */; };
 		D33B1F4D2B575C3000787E3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D33B1F4C2B575C3000787E3C /* Preview Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D31EFD182B5F08F000AD7B56 /* ytdlpExists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ytdlpExists.swift; sourceTree = "<group>"; };
 		D33B1F422B575C2F00787E3C /* Siphon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Siphon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33B1F452B575C2F00787E3C /* SiphonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiphonApp.swift; sourceTree = "<group>"; };
 		D33B1F472B575C2F00787E3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				D3F6C71E2B5C39BB00D9B6E0 /* downloadScript.sh */,
 				D33B1F592B575C6F00787E3C /* authorizeNotifications.swift */,
 				D33B1F5A2B575C6F00787E3C /* triggerNotification.swift */,
+				D31EFD182B5F08F000AD7B56 /* ytdlpExists.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31EFD192B5F08F000AD7B56 /* ytdlpExists.swift in Sources */,
 				D33B1F5C2B575C6F00787E3C /* authorizeNotifications.swift in Sources */,
 				D33B1F482B575C2F00787E3C /* ContentView.swift in Sources */,
 				D33B1F5B2B575C6F00787E3C /* downloadVideo.swift in Sources */,
@@ -319,12 +323,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ghalldev.Siphon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -346,12 +352,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ghalldev.Siphon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
