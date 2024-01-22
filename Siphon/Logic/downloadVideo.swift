@@ -31,6 +31,21 @@ func downloadVideo(_ options: VideoOptions) async throws {
 	
 	try process.run()
 	
+	let data = pipe.fileHandleForReading.readDataToEndOfFile()
+	
+	if let output = String(data: data, encoding: .utf8) {
+		let regexPattern = #"\b(\d+(\.\d+)?)%"#
+		output.enumerateLines { line, _ in
+			if let match = output.range(of: regexPattern, options: .regularExpression) {
+				let percentageString = output[match].dropLast()
+				print(percentageString)
+				if let percentage = Double(percentageString) {
+					print(percentage)
+				}
+			}
+		}
+	}
+	
 	process.waitUntilExit()
 	
 	if process.terminationStatus != 0 {

@@ -33,6 +33,15 @@ struct ContentView: View {
 		}
 		.padding()
 		.frame(width: 400)
+		.sheet(
+			isPresented: $isLoading,
+			content: {
+			VStack {
+				ProgressView()
+				Text("Downloading")
+			}
+			.padding()
+		})
 	}
 	
 	private func clickHandler() async {

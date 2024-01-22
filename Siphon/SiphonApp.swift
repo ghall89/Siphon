@@ -45,9 +45,9 @@ struct Video_StrawApp: App {
 	
 	private func ytdlpCheck() {
 		// ensure yt-dlp is installed
-//		let exists = ytdlpExists()
-//		if !exists {
+		let exists = ytdlpExists()
+		if !exists {
 			showAlert.toggle()
-//		}
+		}
 	}
 }
