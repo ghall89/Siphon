@@ -1,6 +1,6 @@
 import Foundation
 
-func downloadVideo(_ options: VideoOptions) async throws {
+func downloadVideo(_ options: VideoOptions, progressHolder: ProgressHolder) async throws {
 	let process = Process()
 	process.executableURL = URL(fileURLWithPath: "/bin/bash")
 	
@@ -31,19 +31,25 @@ func downloadVideo(_ options: VideoOptions) async throws {
 	
 	try process.run()
 	
-	let data = pipe.fileHandleForReading.readDataToEndOfFile()
+
 	
-	if let output = String(data: data, encoding: .utf8) {
-		let regexPattern = #"\b(\d+(\.\d+)?)%"#
-		output.enumerateLines { line, _ in
-			if let match = output.range(of: regexPattern, options: .regularExpression) {
-				let percentageString = output[match].dropLast()
-				print(percentageString)
-				if let percentage = Double(percentageString) {
-					print(percentage)
+	let outputStream = AsyncStream<String> { continuation in
+		Task {
+			let data = pipe.fileHandleForReading.readDataToEndOfFile()
+			if let output = String(data: data, encoding: .utf8) {
+				let lines = output.components(separatedBy: .newlines)
+				for line in lines {
+					continuation.yield(line)
 				}
 			}
+			continuation.finish()
 		}
+	}
+	
+	var iterator = outputStream.makeAsyncIterator()
+	
+	while let line = await iterator.next() {
+		await processLine(line, progressHolder: progressHolder)
 	}
 	
 	process.waitUntilExit()
@@ -53,6 +59,18 @@ func downloadVideo(_ options: VideoOptions) async throws {
 	} else {
 		triggerNotification("Download Success", message: "Video downloaded sucessfully")
 	}
-	
+	progressHolder.value = 0.0
 }
 
+func processLine(_ line: String, progressHolder: ProgressHolder) async {
+	let regexPattern = #"\b(\d+(\.\d+)?)%"#
+	
+	if let match = line.range(of: regexPattern, options: .regularExpression) {
+		let percentageString = line[match].dropLast()
+		
+		if let percentage = Double(percentageString) {
+			print(percentage)
+			progressHolder.value = percentage
+		}
+	}
+}

@@ -6,6 +6,7 @@ struct ContentView: View {
 	
 	@State var videoUrl: String = ""
 	@State var isLoading: Bool = false
+	@StateObject var progress = ProgressHolder()
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -17,7 +18,7 @@ struct ContentView: View {
 				Button(action: { Task { await clickHandler() } }, label: {
 					Image(systemName: "arrowshape.down.circle")
 				})
-				.disabled(isLoading)
+				.help("Download")
 			}
 			Divider()
 			HStack {
@@ -29,6 +30,7 @@ struct ContentView: View {
 							 label: {
 					Image(systemName: "arrow.down.left.and.arrow.up.right.square.fill")
 				})
+				.help("Resolution")
 			}
 		}
 		.padding()
@@ -37,6 +39,7 @@ struct ContentView: View {
 			isPresented: $isLoading,
 			content: {
 			VStack {
+//				ProgressView(value: progress.value, total: 100.0)
 				ProgressView()
 				Text("Downloading")
 			}
@@ -51,7 +54,8 @@ struct ContentView: View {
 				VideoOptions(
 					url: videoUrl,
 					fileFormat: fileFormat,
-					resolution: resolution)
+					resolution: resolution),
+				progressHolder: progress
 			)
 		} catch {
 			print(error)
@@ -59,4 +63,8 @@ struct ContentView: View {
 		isLoading = false
 	}
 	
+}
+
+class ProgressHolder: ObservableObject {
+	@Published var value: Double = 0.0
 }

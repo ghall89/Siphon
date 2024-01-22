@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd ~/Downloads
-yt-dlp "$1" -S "$2" --progress
+yt-dlp "$1" -S "$2" --newline
